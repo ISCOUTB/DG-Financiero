@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//Christian David Menco Galvan
 void main() {
   runApp(const MyApp());
 }
@@ -34,7 +35,8 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           children: [
             TextField(
-              decoration: const InputDecoration(labelText: 'Correo Electrónico'),
+              decoration:
+                  const InputDecoration(labelText: 'Correo Electrónico'),
             ),
             TextField(
               decoration: const InputDecoration(labelText: 'Contraseña'),
@@ -46,19 +48,23 @@ class LoginScreen extends StatelessWidget {
                 // Al presionar el botón de inicio de sesión, se redirige al Dashboard
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const DashboardScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const DashboardScreen()),
                 );
               },
               child: const Text('Iniciar Sesión'),
             ),
-            TextButton(onPressed: () {}, child: const Text('¿Olvidaste tu contraseña?')),
+            TextButton(
+                onPressed: () {},
+                child: const Text('¿Olvidaste tu contraseña?')),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 // Redirige a la pantalla de registro
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const RegistroScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const RegistroScreen()),
                 );
               },
               child: const Text('Crear Cuenta'),
@@ -86,7 +92,8 @@ class RegistroScreen extends StatelessWidget {
               decoration: const InputDecoration(labelText: 'Nombre'),
             ),
             TextField(
-              decoration: const InputDecoration(labelText: 'Correo Electrónico'),
+              decoration:
+                  const InputDecoration(labelText: 'Correo Electrónico'),
             ),
             TextField(
               decoration: const InputDecoration(labelText: 'Contraseña'),
@@ -98,7 +105,8 @@ class RegistroScreen extends StatelessWidget {
                 // Simular el registro y redirigir al Dashboard
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const DashboardScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const DashboardScreen()),
                 );
               },
               child: const Text('Registrar'),
@@ -133,7 +141,8 @@ class DashboardScreen extends StatelessWidget {
               // Acción para ver el perfil
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const ConfiguracionScreen()),
+                MaterialPageRoute(
+                    builder: (context) => const ConfiguracionScreen()),
               );
             },
           )
@@ -153,10 +162,12 @@ class DashboardScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 20),
-            const Text('Progreso hacia Objetivos', style: TextStyle(fontSize: 18)),
+            const Text('Progreso hacia Objetivos',
+                style: TextStyle(fontSize: 18)),
             LinearProgressIndicator(value: 0.7),
             const SizedBox(height: 20),
-            const Text('Gráfica de Gastos por Categoría', style: TextStyle(fontSize: 18)),
+            const Text('Gráfica de Gastos por Categoría',
+                style: TextStyle(fontSize: 18)),
             Expanded(
               child: Center(
                 child: PieChartWidget(), // Gráfico circular
@@ -167,7 +178,9 @@ class DashboardScreen extends StatelessWidget {
                 // Redirigir a la pantalla de ingreso de datos
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const IngresoGastoScreen(type: 'Gasto')),
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const IngresoGastoScreen(type: 'Gasto')),
                 );
               },
               child: const Icon(Icons.add),
@@ -206,8 +219,10 @@ class IngresoGastoScreen extends StatelessWidget {
             ),
             DropdownButtonFormField<String>(
               items: const [
-                DropdownMenuItem(child: Text('Alimentación'), value: 'Alimentación'),
-                DropdownMenuItem(child: Text('Transporte'), value: 'Transporte'),
+                DropdownMenuItem(
+                    child: Text('Alimentación'), value: 'Alimentación'),
+                DropdownMenuItem(
+                    child: Text('Transporte'), value: 'Transporte'),
               ],
               onChanged: (value) {},
               decoration: const InputDecoration(labelText: 'Categoría'),
@@ -248,7 +263,8 @@ class ConfiguracionScreen extends StatelessWidget {
               decoration: const InputDecoration(labelText: 'Nombre'),
             ),
             TextField(
-              decoration: const InputDecoration(labelText: 'Correo Electrónico'),
+              decoration:
+                  const InputDecoration(labelText: 'Correo Electrónico'),
             ),
             DropdownButtonFormField<String>(
               items: const [
@@ -259,7 +275,8 @@ class ConfiguracionScreen extends StatelessWidget {
               decoration: const InputDecoration(labelText: 'Moneda'),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(onPressed: () {}, child: const Text('Guardar Cambios')),
+            ElevatedButton(
+                onPressed: () {}, child: const Text('Guardar Cambios')),
           ],
         ),
       ),
@@ -274,5 +291,3 @@ class PieChartWidget extends StatelessWidget {
     return const Center(child: Text('Gráfico Circular Placeholder'));
   }
 }
-
-
