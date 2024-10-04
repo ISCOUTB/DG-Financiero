@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+<<<<<<< HEAD
 //Christian David Menco Galvan
+=======
+>>>>>>> 4c9547b51b25389b7ea99cdbc1b32b9ea3b824ba
 void main() {
   runApp(const MyApp());
 }
@@ -35,8 +38,12 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+<<<<<<< HEAD
               decoration:
                   const InputDecoration(labelText: 'Correo Electrónico'),
+=======
+              decoration: const InputDecoration(labelText: 'Correo Electrónico'),
+>>>>>>> 4c9547b51b25389b7ea99cdbc1b32b9ea3b824ba
             ),
             TextField(
               decoration: const InputDecoration(labelText: 'Contraseña'),
@@ -48,23 +55,35 @@ class LoginScreen extends StatelessWidget {
                 // Al presionar el botón de inicio de sesión, se redirige al Dashboard
                 Navigator.pushReplacement(
                   context,
+<<<<<<< HEAD
                   MaterialPageRoute(
                       builder: (context) => const DashboardScreen()),
+=======
+                  MaterialPageRoute(builder: (context) => const DashboardScreen()),
+>>>>>>> 4c9547b51b25389b7ea99cdbc1b32b9ea3b824ba
                 );
               },
               child: const Text('Iniciar Sesión'),
             ),
+<<<<<<< HEAD
             TextButton(
                 onPressed: () {},
                 child: const Text('¿Olvidaste tu contraseña?')),
+=======
+            TextButton(onPressed: () {}, child: const Text('¿Olvidaste tu contraseña?')),
+>>>>>>> 4c9547b51b25389b7ea99cdbc1b32b9ea3b824ba
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 // Redirige a la pantalla de registro
                 Navigator.push(
                   context,
+<<<<<<< HEAD
                   MaterialPageRoute(
                       builder: (context) => const RegistroScreen()),
+=======
+                  MaterialPageRoute(builder: (context) => const RegistroScreen()),
+>>>>>>> 4c9547b51b25389b7ea99cdbc1b32b9ea3b824ba
                 );
               },
               child: const Text('Crear Cuenta'),
@@ -92,8 +111,12 @@ class RegistroScreen extends StatelessWidget {
               decoration: const InputDecoration(labelText: 'Nombre'),
             ),
             TextField(
+<<<<<<< HEAD
               decoration:
                   const InputDecoration(labelText: 'Correo Electrónico'),
+=======
+              decoration: const InputDecoration(labelText: 'Correo Electrónico'),
+>>>>>>> 4c9547b51b25389b7ea99cdbc1b32b9ea3b824ba
             ),
             TextField(
               decoration: const InputDecoration(labelText: 'Contraseña'),
@@ -105,8 +128,12 @@ class RegistroScreen extends StatelessWidget {
                 // Simular el registro y redirigir al Dashboard
                 Navigator.pushReplacement(
                   context,
+<<<<<<< HEAD
                   MaterialPageRoute(
                       builder: (context) => const DashboardScreen()),
+=======
+                  MaterialPageRoute(builder: (context) => const DashboardScreen()),
+>>>>>>> 4c9547b51b25389b7ea99cdbc1b32b9ea3b824ba
                 );
               },
               child: const Text('Registrar'),
@@ -141,8 +168,12 @@ class DashboardScreen extends StatelessWidget {
               // Acción para ver el perfil
               Navigator.push(
                 context,
+<<<<<<< HEAD
                 MaterialPageRoute(
                     builder: (context) => const ConfiguracionScreen()),
+=======
+                MaterialPageRoute(builder: (context) => const ConfiguracionScreen()),
+>>>>>>> 4c9547b51b25389b7ea99cdbc1b32b9ea3b824ba
               );
             },
           )
@@ -162,12 +193,19 @@ class DashboardScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 20),
+<<<<<<< HEAD
             const Text('Progreso hacia Objetivos',
                 style: TextStyle(fontSize: 18)),
             LinearProgressIndicator(value: 0.7),
             const SizedBox(height: 20),
             const Text('Gráfica de Gastos por Categoría',
                 style: TextStyle(fontSize: 18)),
+=======
+            const Text('Progreso hacia Objetivos', style: TextStyle(fontSize: 18)),
+            LinearProgressIndicator(value: 0.7),
+            const SizedBox(height: 20),
+            const Text('Gráfica de Gastos por Categoría', style: TextStyle(fontSize: 18)),
+>>>>>>> 4c9547b51b25389b7ea99cdbc1b32b9ea3b824ba
             Expanded(
               child: Center(
                 child: PieChartWidget(), // Gráfico circular
@@ -178,9 +216,13 @@ class DashboardScreen extends StatelessWidget {
                 // Redirigir a la pantalla de ingreso de datos
                 Navigator.push(
                   context,
+<<<<<<< HEAD
                   MaterialPageRoute(
                       builder: (context) =>
                           const IngresoGastoScreen(type: 'Gasto')),
+=======
+                  MaterialPageRoute(builder: (context) => const IngresoGastoScreen(type: 'Gasto')),
+>>>>>>> 4c9547b51b25389b7ea99cdbc1b32b9ea3b824ba
                 );
               },
               child: const Icon(Icons.add),
@@ -219,10 +261,15 @@ class IngresoGastoScreen extends StatelessWidget {
             ),
             DropdownButtonFormField<String>(
               items: const [
+<<<<<<< HEAD
                 DropdownMenuItem(
                     child: Text('Alimentación'), value: 'Alimentación'),
                 DropdownMenuItem(
                     child: Text('Transporte'), value: 'Transporte'),
+=======
+                DropdownMenuItem(child: Text('Alimentación'), value: 'Alimentación'),
+                DropdownMenuItem(child: Text('Transporte'), value: 'Transporte'),
+>>>>>>> 4c9547b51b25389b7ea99cdbc1b32b9ea3b824ba
               ],
               onChanged: (value) {},
               decoration: const InputDecoration(labelText: 'Categoría'),
@@ -263,8 +310,12 @@ class ConfiguracionScreen extends StatelessWidget {
               decoration: const InputDecoration(labelText: 'Nombre'),
             ),
             TextField(
+<<<<<<< HEAD
               decoration:
                   const InputDecoration(labelText: 'Correo Electrónico'),
+=======
+              decoration: const InputDecoration(labelText: 'Correo Electrónico'),
+>>>>>>> 4c9547b51b25389b7ea99cdbc1b32b9ea3b824ba
             ),
             DropdownButtonFormField<String>(
               items: const [
@@ -275,8 +326,12 @@ class ConfiguracionScreen extends StatelessWidget {
               decoration: const InputDecoration(labelText: 'Moneda'),
             ),
             const SizedBox(height: 20),
+<<<<<<< HEAD
             ElevatedButton(
                 onPressed: () {}, child: const Text('Guardar Cambios')),
+=======
+            ElevatedButton(onPressed: () {}, child: const Text('Guardar Cambios')),
+>>>>>>> 4c9547b51b25389b7ea99cdbc1b32b9ea3b824ba
           ],
         ),
       ),
@@ -291,3 +346,8 @@ class PieChartWidget extends StatelessWidget {
     return const Center(child: Text('Gráfico Circular Placeholder'));
   }
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 4c9547b51b25389b7ea99cdbc1b32b9ea3b824ba
