@@ -19,12 +19,12 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@v1.8
         with:
           args: >
-            -Dsonar.projectKey=ISCOUTB_DG_Financiero
+            -Dsonar.projectKey=ISCOUTB_DG-Financiero
             -Dsonar.organization=isco-utb
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.language=dart
             -Dsonar.sources=lib
             -Dsonar.exclusions=**/*.java,**/*.kt
-            
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
