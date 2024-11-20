@@ -28,6 +28,14 @@ jobs:
 
       - name: Get Flutter dependencies
         run: flutter pub get
+      - name: Run SonarCloud analysis
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Token de SonarCloud configurado en Secrets
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
+        run: |
+          sonar-scanner \
+            -Dsonar.projectKey=<TU_PROJECT_KEY> \
+            -Dsonar.organization=<TU_ORGANIZATION_KEY> \
+            -Dsonar.sources=<directorio_del_codigo_fuente> \
+            -Dsonar.host.url=${{ env.SONAR_HOST_URL }} \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
