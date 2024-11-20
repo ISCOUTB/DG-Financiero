@@ -4,48 +4,17 @@ on:
   push:
     branches:
       - master # Cambia 'master' si tu rama principal tiene otro nombre
-  pull_request:
-    types: [opened, synchronize, reopened]
-
+  workflow_dispatch:
 jobs:
-  sonarcloud:
+  Analisys:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout del código fuente
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      # 2. Configurar JDK 11 (necesario para SonarCloud)
-      - name: Set up JDK 11
-        uses: actions/setup-java@v3
+      - uses: actions/checkout@v4
         with:
-          java-version: '11'
-          distribution: 'temurin' # O usa 'adopt' si prefieres AdoptOpenJDK
-
-
-      # 3. Caché para los paquetes de SonarCloud (opcional pero recomendado)
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-
-      # 4. Caché para el Sonar Scanner (opcional pero recomendado)
-      - name: Cache SonarCloud scanner
-        uses: actions/cache@v3
-        with:
-          path: ~/.sonar/scanner
-          key: ${{ runner.os }}-sonar-scanner
-
-      # 5. Ejecutar el análisis de SonarCloud
-      - name: Run SonarCloud analysis
+          fetch-depth: 0
+      - name: Analisys whith SonarQube
+        uses: SonarSource/Sonarqube-scan-action@v2.0.1
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Token de SonarCloud configurado en Secrets
-        run: |
-          sonar-scanner \
-            -Dsonar.projectKey=ISCOUTB_DG-Financiero \ # Reemplaza <projectKey> con tu clave real
-            -Dsonar.organization=isco-utb \           # Reemplaza <organizationKey> con tu clave real
-            -Dsonar.sources=lib \                     # Solo analiza la carpeta `lib/`
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          #SONAR_HOST_URL:${{ vars.SONAR_HOST_URL }}
