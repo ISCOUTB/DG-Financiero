@@ -22,11 +22,11 @@ jobs:
         with:
           sdk: "stable"
 
-      # 3. Instalar Flutter
+      # 3. Instalar Flutter con versión especificada
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "stable" # Puedes cambiar a una versión específica como "3.13.0"
+          flutter-version: "3.13.0" # Cambia por la versión más reciente si es necesario
 
       # 4. Obtener dependencias de Flutter
       - name: Get Flutter dependencies
