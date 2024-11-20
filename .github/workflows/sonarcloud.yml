@@ -3,7 +3,7 @@ name: SonarCloud Analysis
 on:
   push:
     branches:
-      - master
+      - master  # Cambia si tu rama principal tiene otro nombre
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -20,19 +20,27 @@ jobs:
       - name: Install Dart SDK
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: "3.5.2" # La versión mínima requerida por tu proyecto
+          sdk: "3.5.2"
 
-      # 3. Instalar Flutter versión 3.24.5
+      # 3. Instalar Flutter compatible
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.24.5" # Versión compatible con Dart 3.5.2
+          flutter-version: "3.24.5"
 
       # 4. Obtener dependencias de Flutter
       - name: Get Flutter dependencies
         run: flutter pub get
 
-      # 5. Ejecutar el análisis de SonarCloud
+      # 5. Instalar SonarScanner
+      - name: Install SonarScanner
+        run: |
+          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
+          unzip sonar-scanner-cli-4.8.0.2856-linux.zip
+          mv sonar-scanner-4.8.0.2856-linux sonar-scanner
+          echo "$(pwd)/sonar-scanner/bin" >> $GITHUB_PATH
+
+      # 6. Ejecutar el análisis de SonarCloud
       - name: Run SonarCloud analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
