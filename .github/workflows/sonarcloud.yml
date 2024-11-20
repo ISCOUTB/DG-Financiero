@@ -32,7 +32,14 @@ jobs:
       - name: Get Flutter dependencies
         run: flutter pub get
 
-      # 5. Instalar SonarScanner
+      # 5. Configurar Java 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      # 6. Instalar SonarScanner
       - name: Install SonarScanner
         run: |
           wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
@@ -40,7 +47,7 @@ jobs:
           mv sonar-scanner-4.8.0.2856-linux sonar-scanner
           echo "$(pwd)/sonar-scanner/bin" >> $GITHUB_PATH
 
-      # 6. Ejecutar el análisis de SonarCloud
+      # 7. Ejecutar el análisis de SonarCloud
       - name: Run SonarCloud analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -52,6 +59,7 @@ jobs:
             -Dsonar.sources=lib \
             -Dsonar.host.url=${{ env.SONAR_HOST_URL }} \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
 
 
 
