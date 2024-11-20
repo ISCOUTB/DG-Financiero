@@ -3,31 +3,31 @@ name: SonarCloud Analysis
 on:
   push:
     branches:
-      - master # Cambia 'master' si tu rama principal tiene otro nombre
-  workflow_dispatch:
+      - master  # Cambia si tu rama principal tiene otro nombre
+  pull_request:
+    types: [opened, synchronize, reopened]
+
 jobs:
-  Analisys:
+  sonarcloud:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Analisys whith SonarQube
-        uses: SonarSource/Sonarqube-scan-action@v2.0.1
-      - name: Install Dart SDK
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Dart SDK (si es necesario)
         uses: dart-lang/setup-dart@v1
         with:
           sdk: "stable"
 
-      # 3. Instalar Flutter y dependencias
-      - name: Install Flutter
+      - name: Install Flutter (si es necesario)
         uses: subosito/flutter-action@v2
         with:
           flutter-version: "stable"
 
-      - name: Get Flutter dependencies
+      - name: Get Flutter dependencies (si es necesario)
         run: flutter pub get
+
       - name: Run SonarCloud analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -39,3 +39,4 @@ jobs:
             -Dsonar.sources=<directorio_del_codigo_fuente> \
             -Dsonar.host.url=${{ env.SONAR_HOST_URL }} \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
