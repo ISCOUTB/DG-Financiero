@@ -3,7 +3,7 @@ name: SonarCloud Analysis
 on:
   push:
     branches:
-      - master
+      - master  # Cambia si tu rama principal tiene otro nombre
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -16,17 +16,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Instalar Dart SDK
+      # 2. Instalar Dart SDK compatible
       - name: Install Dart SDK
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: "stable"
+          sdk: "3.5.2" # Versión compatible con el rango especificado en pubspec.yaml
 
-      # 3. Instalar Flutter con versión especificada
+      # 3. Instalar Flutter compatible
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.13.0" # Cambia por la versión más reciente si es necesario
+          flutter-version: "3.13.0" # Una versión estable compatible con Dart 3.5.2
 
       # 4. Obtener dependencias de Flutter
       - name: Get Flutter dependencies
@@ -44,4 +44,5 @@ jobs:
             -Dsonar.sources=lib \
             -Dsonar.host.url=${{ env.SONAR_HOST_URL }} \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
 
