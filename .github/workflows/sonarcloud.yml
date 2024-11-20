@@ -3,7 +3,7 @@ name: SonarCloud Analysis
 on:
   push:
     branches:
-      - master  # Cambia si tu rama principal tiene otro nombre
+      - master
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -12,31 +12,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout del código fuente
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Dart SDK (si es necesario)
+      # 2. Instalar Dart SDK
+      - name: Install Dart SDK
         uses: dart-lang/setup-dart@v1
         with:
           sdk: "stable"
 
-      - name: Install Flutter (si es necesario)
+      # 3. Instalar Flutter
+      - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "stable"
+          flutter-version: "stable" # Puedes cambiar a una versión específica como "3.13.0"
 
-      - name: Get Flutter dependencies (si es necesario)
+      # 4. Obtener dependencias de Flutter
+      - name: Get Flutter dependencies
         run: flutter pub get
 
+      # 5. Ejecutar el análisis de SonarCloud
       - name: Run SonarCloud analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
         run: |
           sonar-scanner \
-            -Dsonar.projectKey=<TU_PROJECT_KEY> \
-            -Dsonar.organization=<TU_ORGANIZATION_KEY> \
-            -Dsonar.sources=<directorio_del_codigo_fuente> \
+            -Dsonar.projectKey=ISCOUTB_DG-Financiero \
+            -Dsonar.organization=isco-utb \
+            -Dsonar.sources=lib \
             -Dsonar.host.url=${{ env.SONAR_HOST_URL }} \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
